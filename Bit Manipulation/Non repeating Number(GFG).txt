@@ -1,0 +1,38 @@
+class Solution
+{
+    public int[] singleNumber(int[] nums)
+    {
+        // Code here
+        // Finding XOR of all
+        int arr[] = new int[2];
+        int num1 = 0;
+        int num2 = 0;
+        int XOR = 0;
+        for(int i = 0; i < nums.length;i++)
+        {
+            XOR = XOR ^ nums[i];
+        }
+        
+        int lsetbit = XOR & ~(XOR-1);
+        System.out.println(lsetbit);
+        // Separating Numbers in group
+        for(int i = 0; i < nums.length; i++)
+        {
+            if((lsetbit & nums[i]) != 0)
+            {
+                num1 = num1 ^ nums[i];
+            }
+            
+            else
+            {
+                num2 = num2 ^ nums[i];
+            }
+        }
+        
+        arr[0]=num1;
+        arr[1]=num2;
+        Arrays.sort(arr);
+        
+        return arr;
+    }
+}
