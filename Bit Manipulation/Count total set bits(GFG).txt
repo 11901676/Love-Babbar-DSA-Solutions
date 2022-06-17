@@ -1,0 +1,18 @@
+class Solution{
+    
+    //Function to return sum of count of set bits in the integers from 1 to n.
+    public static int countSetBits(int n){
+    
+        // Your code here
+        int count = 0;
+        for(int i = 1; i <=n ;i++)
+        {
+            while(i>0)
+            {
+                n = n & (n-1); // This will turn of the rightmost set bit after every iteration
+                count++;
+            }
+        }
+        return count;
+    }
+}
