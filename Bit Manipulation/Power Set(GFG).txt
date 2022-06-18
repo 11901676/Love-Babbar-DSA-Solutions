@@ -1,0 +1,22 @@
+class Solution
+{
+    public List<String> AllPossibleStrings(String s)
+    {
+        // Code here
+       List<String> al = new ArrayList<>();
+        for(int i = 1; i < (int)Math.pow(2,s.length());i++)
+        {
+            String str = "";
+            for(int j =0 ; j < s.length();j++)
+            {
+                if((i&(1<<j))!=0)
+                {
+                    str = str + s.charAt(j);
+                }
+            }
+            al.add(str);
+        }
+        Collections.sort(al);
+        return al;
+    }
+}
