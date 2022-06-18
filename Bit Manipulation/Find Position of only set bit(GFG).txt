@@ -1,0 +1,21 @@
+class Solution {
+    static int findPosition(int N) {
+        // code here
+        // Only powers of 2 contains a single set bit and position of those set bit
+        // will always be ((power of 2)+1) as - 4(100) is 2^2 and position of set bit
+        // is 3 so we have to calculate power of 2 then add 1
+        
+        
+        // because Math.log() is with base e so we have to convert it in log2(N) explicitly
+        
+        if(((N!=0) && (N&(N-1))==0))
+        {
+            return (int)(Math.log(N)/Math.log(2))+1;
+        }
+        else
+        {
+            return -1;
+        }
+        
+    }
+}
