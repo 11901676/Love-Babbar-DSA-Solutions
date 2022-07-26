@@ -1,0 +1,47 @@
+class Solution {
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        int aux[] = new int[m+n];
+        int i = 0;
+        int j = 0;
+        int count = 0;
+        
+        //Two pointer technique
+        while(n > 0 && i < m && j < n)
+        {
+            if(nums1[i] <= nums2[j])
+            {
+                aux[count] = nums1[i];
+                i++;
+                count++;
+            }
+            else
+            {
+                aux[count] = nums2[j];
+                j++;
+                count++;
+            }
+        }
+        
+        
+        //Adding the remaining elements
+        while(i < m)
+        {
+            aux[count] = nums1[i];
+            count++;
+            i++;
+        }
+        
+        while(j < n)
+        {
+            aux[count] = nums2[j];
+            count++;
+            j++;
+        }
+        
+        // Updating original array
+        for(int k = 0; k < nums1.length; k++)
+        {
+            nums1[k] = aux[k];
+        }
+    }
+}
