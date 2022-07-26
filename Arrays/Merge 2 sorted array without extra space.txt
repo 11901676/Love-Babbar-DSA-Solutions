@@ -1,0 +1,46 @@
+class Solution {
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+       
+        int gap = nums1.length/2;
+        
+        for(int j = 0;j < n ;j++)
+        {
+            nums1[m+j] = nums2[j];
+        }
+        //System.out.println(gap);
+        //System.out.println(Arrays.toString(nums1));
+        
+        
+        while(gap>=1)
+        {
+            int gap_pointer = gap;
+            int first_pointer = 0;
+            while(gap_pointer < nums1.length)
+            {
+                //System.out.print(nums1[first_pointer]+" "+nums1[gap_pointer]);
+                if(nums1[first_pointer] > nums1[gap_pointer])
+                {
+                    int temp = nums1[first_pointer];
+                    nums1[first_pointer] = nums1[gap_pointer];
+                    nums1[gap_pointer] = temp;
+                }
+
+                gap_pointer++;
+                first_pointer++;
+                //System.out.println();
+            }
+            
+            // Getting ceil value of gap
+            if(gap/2 > 0)
+            {
+                gap = gap/2 + gap%2; // so that we can avoid infinite loop otherwise gap will always be 1
+            }
+            else
+            {
+                gap = gap/2;
+            }
+            //System.out.println(gap);
+            //System.out.println(Arrays.toString(nums1));
+        }
+    }
+}
