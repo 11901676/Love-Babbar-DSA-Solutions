@@ -1,0 +1,35 @@
+class Solution {
+    public int[][] merge(int[][] intervals) {
+    // Sorting the intervals 
+      Arrays.sort(intervals, (a,b)->(a[0]-b[0]));
+      
+      int res = 0;
+      ArrayList<int[]> al = new ArrayList<>();
+      for(int i = 1; i < intervals.length; i++)
+      {
+          //intervals are to be merged
+          if(intervals[res][1] >= intervals[i][0])
+          {
+             intervals[res][0] = Math.min(intervals[res][0], intervals[i][0]);
+             intervals[res][1] = Math.max(intervals[res][1], intervals[i][1]);
+          }
+          //non-merging intervals
+          else
+          {
+              res++;
+              //Override the interval
+              intervals[res][0] = intervals[i][0];
+              intervals[res][1] = intervals[i][1];
+          }
+      }
+        
+        
+        //adding the modified intervals
+        for(int i = 0; i <= res; i++)
+        {
+            al.add(intervals[i]);
+        }
+        
+        return al.toArray(new int[res][2]);
+    }
+}
