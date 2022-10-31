@@ -1,0 +1,35 @@
+class Solution
+{
+    ArrayList<Integer> commonElements(int A[], int B[], int C[], int n1, int n2, int n3) 
+    {
+        //code here 
+       TreeSet<Integer> h1 = new TreeSet<Integer>();
+       for(int ele : A)
+       {
+           h1.add(ele);
+       }
+       
+       TreeSet<Integer> h2 = new TreeSet<Integer>();
+       for(int ele : B)
+       {
+           h2.add(ele);
+       }
+       
+       
+       TreeSet<Integer> h3 = new TreeSet<Integer>();
+       for(int ele : C)
+       {
+           h3.add(ele);
+       }
+       
+       h2.retainAll(h1);
+       h3.retainAll(h2);
+       
+        ArrayList<Integer> al = new ArrayList<>();
+        for(Integer ele : h3)
+        {
+            al.add(ele);
+        }
+        return al;
+    }
+}
