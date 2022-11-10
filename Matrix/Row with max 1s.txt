@@ -1,0 +1,33 @@
+class Solution {
+    int rowWithMax1s(int arr[][], int n, int m) {
+        // code here
+        int rowIndex = 0;
+        int columnIndex = m-1;
+        
+        // 0 0 0 1 1 1 1 1 1
+        // 0 0 0 0 1 1 1 1 1
+        // 0 0 0 0 1 1 1 1 1
+        
+        int rowWithMax1 = 0;
+        
+        while(rowIndex < n && columnIndex >=0)
+        {
+            //start from top-right corner
+            if(arr[rowIndex][columnIndex] == 1)
+            {
+                rowWithMax1 = Math.max(rowWithMax1, rowIndex);
+                columnIndex--;
+            }
+            else
+            {
+                rowIndex++;  
+            }
+        }
+        if(columnIndex == m-1)
+        {
+            //it means there is not any 1 present in array
+            return -1;
+        }
+        return rowWithMax1;
+    }
+}
