@@ -1,0 +1,17 @@
+class Solution {
+    int isPalindrome(String S) {
+        // code here
+        int low = 0;
+        int high = S.length()-1;
+        while(low <= high)
+        {
+            if(S.charAt(low)!=S.charAt(high))
+            {
+                return 0;
+            }
+            low++;
+            high--;
+        }
+        return 1;
+    }
+}
